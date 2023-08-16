@@ -5,13 +5,15 @@ using UnityEngine;
 public class Banner : MonoBehaviour
 {
     // These ad units are configured to always serve test ads.
-    #if UNITY_ANDROID
-    private string _adUnitId = "ca-app-pub-3940256099942544/6300978111";
-    #elif UNITY_IPHONE
+#if UNITY_ANDROID
+    //test id
+    //private string _adUnitId = "ca-app-pub-3940256099942544/6300978111";
+    private string _adUnitId = "ca-app-pub-8096030323730202/4121201779";
+#elif UNITY_IPHONE
     private string _adUnitId = "ca-app-pub-3940256099942544/2934735716";
-    #else
+#else
     private string _adUnitId = "unused";
-    #endif
+#endif
 
     BannerView _bannerView;
 

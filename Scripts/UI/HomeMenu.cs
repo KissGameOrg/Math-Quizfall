@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HomeMenu : MonoBehaviour
 {
     [SerializeField] private GameObject mainAreaCanvas;
-    [SerializeField]private GameObject loadingCanvas;
+    [SerializeField] private GameObject loadingCanvas;
     [SerializeField] private GameObject difficultyCanvas;
     [SerializeField] private Image loadingFill;
     [SerializeField] private GameObject extraItems;
@@ -26,6 +26,7 @@ public class HomeMenu : MonoBehaviour
     [SerializeField] private GameObject soundOn;
     [SerializeField] private GameObject soundOff;
 
+    [SerializeField] private Banner bannerAd;
 
     private void Start()
     {
@@ -74,12 +75,13 @@ public class HomeMenu : MonoBehaviour
     IEnumerator LoadPlaySceneAsync(string scene)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
-        
-        loadingCanvas.SetActive(true);
 
+        loadingCanvas.SetActive(true);
+        //Destroying banner while playing
+        bannerAd.DestroyAd();
         while (!operation.isDone)
         {
-            float progressValue = Mathf.Clamp01(operation.progress/0.9f);
+            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
             loadingFill.fillAmount = progressValue;
             yield return null;
         }
