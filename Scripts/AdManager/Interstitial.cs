@@ -6,13 +6,16 @@ public class Interstitial : MonoBehaviour
 {
 
     // These ad units are configured to always serve test ads.
-    #if UNITY_ANDROID
-    private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
-    #elif UNITY_IPHONE
+#if UNITY_ANDROID
+    //test ad
+    //private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
+
+    private string _adUnitId = "ca-app-pub-8096030323730202/6209622149";
+#elif UNITY_IPHONE
     private string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
-    #else
+#else
     private string _adUnitId = "unused";
-    #endif
+#endif
 
     public static InterstitialAd interstitialAd;
 
@@ -25,10 +28,12 @@ public class Interstitial : MonoBehaviour
         });
 
         LoadInterstitialAd();
-        if (interstitialAd != null)
-        {
-            ShowAd();
-        }
+
+        print("Interstiaal loaded " + interstitialAd.CanShowAd());
+        //if (interstitialAd != null)
+        //{
+        //ShowAd();
+        //}
     }
 
     /// <summary>
@@ -54,8 +59,8 @@ public class Interstitial : MonoBehaviour
         InterstitialAd.Load(_adUnitId, adRequest,
             (InterstitialAd ad, LoadAdError error) =>
             {
-              // if error is not null, the load request failed.
-              if (error != null || ad == null)
+                // if error is not null, the load request failed.
+                if (error != null || ad == null)
                 {
                     Debug.LogError("interstitial ad failed to load an ad " +
                                    "with error : " + error);
@@ -66,6 +71,8 @@ public class Interstitial : MonoBehaviour
                           + ad.GetResponseInfo());
 
                 interstitialAd = ad;
+
+                ShowAd();
             });
     }
 

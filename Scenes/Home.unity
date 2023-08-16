@@ -2426,6 +2426,7 @@ MonoBehaviour:
   difficultyAnimator: {fileID: 421224468}
   soundOn: {fileID: 1057304318}
   soundOff: {fileID: 1875588869}
+  bannerAd: {fileID: 1811333481}
 --- !u!114 &538207010
 MonoBehaviour:
   m_ObjectHideFlags: 0
